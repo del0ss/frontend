@@ -1,0 +1,19 @@
+.btn {
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    border: 1px solid #EB5A1E;
+    border-radius: 30px;
+}
+
+.orange {
+    width: 132px;
+    height: 40px;
+    background-color: var(--light-grey);
+    color: #EB5A1E;
+}
+
+.orange:hover {
+    background-color: #b9542b;
+}

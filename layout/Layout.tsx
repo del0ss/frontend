@@ -6,9 +6,9 @@ const Layout = ({ children , ...props}: LayoutProps) : JSX.Element => {
     return (
         <div className="wrapper" {...props}>
             <Header/>
-                <div>
+                <>
                     {children}
-                </div>
+                </>
         </div>
     )
 }

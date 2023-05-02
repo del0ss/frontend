@@ -13,7 +13,6 @@ function Home({posts, pizzas}: HomeProps) {
     const [loading, setLoading] = useState(false)
 
     return (
-        <>
             <div className="content">
                 <div className="container">
                     <div className="content__top">
@@ -26,7 +25,6 @@ function Home({posts, pizzas}: HomeProps) {
                     </div>
                 </div>
             </div>
-        </>
     )
 }
 

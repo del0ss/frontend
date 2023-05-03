@@ -3,18 +3,22 @@ import {CategoriesProps} from "./Categories.Props";
 import {GetStaticProps} from "next";
 import axios from "axios";
 import {Pizza} from "../../interfaces/pizza";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "@/redux/store";
+import {setCategoryId} from "@/redux/slices/filterSlice";
 
 const Categories = ({} : CategoriesProps) : JSX.Element => {
     const categories: string[] = ["Все", "Мясные", "Вегетарианская", "Гриль", "Острые", "Закрытые"]
-    const [active, setActive] = useState(0)
+    const categoryId = useSelector((state: RootState) => state.filter.categoryId)
+    const dispatch = useDispatch()
     return (
         <div className="categories">
             <ul>
                 {categories.map((cat, i) =>
                     <li
                         key={i}
-                        onClick={() => setActive(i)}
-                        className={active === i ? "active" : ""}
+                        onClick={() => dispatch(setCategoryId(i))}
+                        className={categoryId === i ? "active" : ""}
                     >
                         {cat}
                     </li>)

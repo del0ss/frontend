@@ -1,6 +1,6 @@
-import {withLayout} from "../../layout/Layout";
 import {GetStaticProps} from "next";
 import axios from "axios";
+import {withLayout} from "../../layout/Layout";
 import Categories from "../../components/Categories/Categories";
 import Sort from "../../components/Sort/Sort";
 import PizzaCard from "../../components/PizzaCard/PizzaCard";
@@ -11,19 +11,20 @@ import {AppContext} from "../../context/AppContext";
 
 
 function Home({posts, pizzas}: HomeProps) {
+
     return (
-            <div className="content">
-                <div className="container">
-                    <div className="content__top">
-                        <Categories/>
-                        <Sort/>
-                    </div>
-                    <h2 className="content__title">Все пиццы</h2>
-                    <div className="content__items">
-                        {pizzas.map(pizza => <PizzaCard key={pizza.id} {...pizza} />)}
-                    </div>
+        <div className="content">
+            <div className="container">
+                <div className="content__top">
+                    <Categories />
+                    <Sort/>
+                </div>
+                <h2 className="content__title">Все пиццы</h2>
+                <div className="content__items">
+                    {pizzas.map(pizza => <PizzaCard key={pizza.id} {...pizza} />)}
                 </div>
             </div>
+        </div>
     )
 }
 

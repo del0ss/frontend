@@ -6,12 +6,11 @@ import Sort from "../../components/Sort/Sort";
 import PizzaCard from "../../components/PizzaCard/PizzaCard";
 import {Pizza} from "../../interfaces/pizza";
 import Skeleton from "../../components/PizzaCard/Skeleton";
-import {useState} from "react";
+import {createContext, useContext, useState} from "react";
+import {AppContext} from "../../context/AppContext";
 
 
 function Home({posts, pizzas}: HomeProps) {
-    const [loading, setLoading] = useState(false)
-
     return (
             <div className="content">
                 <div className="container">

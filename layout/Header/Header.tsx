@@ -2,6 +2,7 @@ import React from 'react';
 import {HeaderProps} from "./Header.props";
 import LogoSvg from "../../src/assets/img/pizza-logo.svg"
 import Link from "next/link";
+import Search from "../../components/Search/Search";
 
 // Error: Invariant: attempted to hard navigate to the same URL --- пофиксить
 const Header = ({...props}: HeaderProps): JSX.Element => {
@@ -17,6 +18,7 @@ const Header = ({...props}: HeaderProps): JSX.Element => {
                         </div>
                     </div>
                 </Link>
+                <Search />
                 <div className="header__cart">
                         <Link href="/cart" className="button button--cart">
                             <span>520 ₽</span>

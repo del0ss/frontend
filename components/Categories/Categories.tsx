@@ -1,26 +1,25 @@
 import React, {useState} from 'react';
-import {CategoriesProps} from "./Categories.Props";
 import {GetStaticProps} from "next";
 import axios from "axios";
 import {Pizza} from "../../interfaces/pizza";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "@/redux/store";
 import {setCategoryId} from "@/redux/slices/filterSlice";
+import {CategoriesProps} from "./Categories.Props";
 
-const Categories = ({} : CategoriesProps) : JSX.Element => {
-    const categories: string[] = ["Все", "Мясные", "Вегетарианская", "Гриль", "Острые", "Закрытые"]
+const Categories = ({categories} : CategoriesProps) : JSX.Element => {
     const categoryId = useSelector((state: RootState) => state.filter.categoryId)
     const dispatch = useDispatch()
     return (
         <div className="categories">
             <ul>
-                {categories.map((cat, i) =>
+                {categories.map(cat =>
                     <li
-                        key={i}
-                        onClick={() => dispatch(setCategoryId(i))}
-                        className={categoryId === i ? "active" : ""}
+                        key={cat.id}
+                        onClick={() => dispatch(setCategoryId(cat.id))}
+                        className={categoryId === cat.id ? "active" : ""}
                     >
-                        {cat}
+                        {cat.name}
                     </li>)
                 }
             </ul>
@@ -29,18 +28,3 @@ const Categories = ({} : CategoriesProps) : JSX.Element => {
 };
 
 export default Categories;
-
-// export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-//     const {data: pizzas} = await axios.get<Pizza[]>(process.env.NEXT_PUBLIC_DOMAIN + "/pizza")
-//
-//     return {
-//         props: {
-//             pizzas,
-//         }
-//     }
-// }
-//
-//
-// interface HomeProps extends Record<string, unknown> {
-//     pizzas: Pizza[]
-// }

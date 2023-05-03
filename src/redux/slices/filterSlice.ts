@@ -9,7 +9,7 @@ interface FilterState {
 }
 
 const initialState: FilterState = {
-    categoryId: 0,
+    categoryId: 1,
     sort: {
         name: "популярности",
         sortProperty: "rating",

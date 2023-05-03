@@ -1,17 +1,30 @@
-import React, {useState} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
+import debounce from "lodash.debounce"
 import {SearchProps} from "./Search.props";
 import styles from './Search.module.css';
 
-const Search = ({children, ...props}: SearchProps) : JSX.Element => {
-   const [search, setSearch] = useState("")
+const Search = ({children, ...props}: SearchProps): JSX.Element => {
+    const [value, setValue] = useState("")
+    const [_, setSearch] = useState("")
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const updateSearchValue = useCallback(
+        debounce((str) => {
+            setSearch(str)
+        }, 300),
+        []
+    )
+    const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>)  => {
+        setValue(event.target.value)
+        updateSearchValue(event.target.value)
+    }
     return (
         <div className={styles.search}>
             <input
                 className={styles.input}
-                value={search}
-
+                value={value}
                 placeholder="Найти пиццу..."
-                onChange={e => setSearch(e.target.value)}
+                onChange={onChangeInput}
             />
         </div>
     );

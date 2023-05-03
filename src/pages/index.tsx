@@ -10,13 +10,13 @@ import {createContext, useContext, useState} from "react";
 import {AppContext} from "../../context/AppContext";
 
 
-function Home({posts, pizzas}: HomeProps) {
+function Home({pizzas, categories}: HomeProps) {
 
     return (
         <div className="content">
             <div className="container">
                 <div className="content__top">
-                    <Categories />
+                    <Categories categories={categories}/>
                     <Sort/>
                 </div>
                 <h2 className="content__title">Все пиццы</h2>
@@ -33,10 +33,12 @@ export default withLayout(Home)
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
     const {data: pizzas} = await axios.get<Pizza[]>(process.env.NEXT_PUBLIC_DOMAIN + "/pizza")
+    const {data: categories} = await axios.get<Category[]>(process.env.NEXT_PUBLIC_DOMAIN + "/pizza/categories")
 
     return {
         props: {
             pizzas,
+            categories
         }
     }
 }
@@ -44,4 +46,5 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 
 interface HomeProps extends Record<string, unknown> {
     pizzas: Pizza[]
+    categories: Category[]
 }

@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {SortProps} from "./Sort.Props";
 import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "@/redux/store";
+import {AppDispatch, RootState} from "@/redux/store";
 import {setSort} from "@/redux/slices/filterSlice";
 
 const Sort = ({}: SortProps): JSX.Element => {
@@ -10,17 +10,31 @@ const Sort = ({}: SortProps): JSX.Element => {
         {name: "цене", sortProperty: "price"},
         {name: "алфавиту", sortProperty: "title"},
     ]
-    const dispatch = useDispatch()
+    const dispatch: AppDispatch = useDispatch()
     const sort = useSelector((state: RootState) => state.filter.sort)
-
     const [visible, setVisible] = useState(false)
+    const sortRef = useRef<HTMLDivElement>(null)
 
     const onClickListItem = (obj: Object): void => {
         dispatch(setSort(obj))
         setVisible(false)
     }
+
+    useEffect(() => {
+        const handleClick = (event: Event) => {
+            if (!event.composedPath().includes(sortRef.current)) {
+                setVisible(false)
+            }
+        }
+        document.body.addEventListener("click", handleClick)
+
+        return () => {
+            document.body.removeEventListener("click", handleClick)
+        }
+    }, [])
+
     return (
-        <div className="sort">
+        <div className="sort" ref={sortRef}>
             <div className="sort__label">
                 <svg
                     width="10"

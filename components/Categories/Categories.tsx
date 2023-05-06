@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
 import {GetStaticProps} from "next";
 import axios from "axios";
-import {Pizza} from "../../interfaces/pizza";
+import {Pizza} from "../../types/pizza";
 import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "@/redux/store";
+import {AppDispatch, RootState} from "@/redux/store";
 import {setCategoryId} from "@/redux/slices/filterSlice";
 import {CategoriesProps} from "./Categories.Props";
 
 const Categories = ({categories} : CategoriesProps) : JSX.Element => {
     const categoryId = useSelector((state: RootState) => state.filter.categoryId)
-    const dispatch = useDispatch()
+    const dispatch: AppDispatch = useDispatch()
     return (
         <div className="categories">
             <ul>

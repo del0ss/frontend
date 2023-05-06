@@ -11,6 +11,7 @@ const Search = ({children, ...props}: SearchProps): JSX.Element => {
     const updateSearchValue = useCallback(
         debounce((str) => {
             setSearch(str)
+            console.log(str)
         }, 300),
         []
     )

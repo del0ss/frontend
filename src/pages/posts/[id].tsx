@@ -1,7 +1,7 @@
 import {Inter} from 'next/font/google'
-import {withLayout} from "../../../layout/Layout";
+import {withLayout} from "../../../../frontend/src/components/Layout/Layout";
 import {GetStaticPaths, GetStaticProps, GetStaticPropsContext} from "next";
-import {Post} from "../../../interfaces/post";
+import {Post} from "../../../types/post";
 import axios from "axios";
 import {ParsedUrlQuery} from "querystring";
 

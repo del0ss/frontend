@@ -4,10 +4,8 @@ import {withLayout} from "../../layout/Layout";
 import Categories from "../../components/Categories/Categories";
 import Sort from "../../components/Sort/Sort";
 import PizzaCard from "../../components/PizzaCard/PizzaCard";
-import {Pizza} from "../../interfaces/pizza";
-import Skeleton from "../../components/PizzaCard/Skeleton";
-import {createContext, useContext, useState} from "react";
-import {AppContext} from "../../context/AppContext";
+import {Pizza} from "../../types/pizza";
+import {Category} from "../../types/category";
 
 
 function Home({pizzas, categories}: HomeProps) {

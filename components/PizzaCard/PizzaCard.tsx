@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import Button from "../Button/Button";
-import {PizzaCardProps, PizzaEnum} from "./PizzaCard.Props"
 import {useDispatch, useSelector} from "react-redux";
 import {addItem} from "@/redux/slices/cartSlice";
 import {AppDispatch, RootState} from "@/redux/store";
+import cn from "classnames"
+import Button from "../Button/Button";
+import {PizzaCardProps, PizzaEnum} from "./PizzaCard.Props"
 import {Item} from "../../types/item";
 
 const PizzaCard = ({id, name, price, imageURL, sizes, types, children}: PizzaCardProps): JSX.Element => {
@@ -39,7 +40,9 @@ const PizzaCard = ({id, name, price, imageURL, sizes, types, children}: PizzaCar
                         {types.map((type) => <li
                                 key={type}
                                 onClick={() => setActiveType(type)}
-                                className={activeType === type ? "active" : ""}>{PizzaEnum[type]}
+                                className={cn({
+                                    ["active"]: activeType === type
+                                })}>{PizzaEnum[type]}
                             </li>
                         )}
                     </ul>
@@ -47,7 +50,9 @@ const PizzaCard = ({id, name, price, imageURL, sizes, types, children}: PizzaCar
                         {sizes.map((size, i) => <li
                                 key={size}
                                 onClick={() => setActiveSize(i)}
-                                className={activeSize === i ? "active" : ""}>{size} см.
+                                className={cn({
+                                    ["active"]: activeSize === i
+                                })}>{size} см.
                             </li>
                         )}
                     </ul>

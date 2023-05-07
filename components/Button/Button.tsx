@@ -1,6 +1,4 @@
 import React, {FC} from 'react';
-import styles from './Button.module.css'
-import cn from "classnames"
 import {ButtonProps} from "./Button.props";
 
 

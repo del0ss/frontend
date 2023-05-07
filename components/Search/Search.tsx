@@ -1,4 +1,4 @@
-import React, {useCallback, useRef, useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import debounce from "lodash.debounce"
 import {SearchProps} from "./Search.props";
 import styles from './Search.module.css';

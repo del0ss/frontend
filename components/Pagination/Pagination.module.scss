@@ -1,0 +1,32 @@
+.pagination{
+  :global{
+    .selected{
+      a{
+        background-color: #fc6b2f;
+        transition: 0.1s;
+        cursor: pointer;
+      }
+    }
+  }
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  a {
+    display: flex;
+    border: 1px solid  #f24701;
+    border-radius: 30px;
+    height: 40px;
+    width: 40px;
+    justify-content: center;
+    align-items: center;
+  }
+  a:hover{
+    background-color: #fc6b2f;
+    transition: 0.1s;
+    cursor: pointer;
+  }
+}

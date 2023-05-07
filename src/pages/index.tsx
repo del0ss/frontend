@@ -6,9 +6,10 @@ import Sort from "../../components/Sort/Sort";
 import PizzaCard from "../../components/PizzaCard/PizzaCard";
 import {Pizza} from "../../types/pizza";
 import {Category} from "../../types/category";
+import Pagination from "../../components/Pagination/Pagination";
 
 
-function Home({pizzas, categories}: HomeProps) {
+function HomePage({pizzas, categories}: HomeProps) {
 
     return (
         <div className="content">
@@ -22,12 +23,13 @@ function Home({pizzas, categories}: HomeProps) {
                     {pizzas.map(pizza => <PizzaCard key={pizza.id} {...pizza} />)}
                 </div>
             </div>
+            <Pagination/>
         </div>
     )
 }
 
 
-export default withLayout(Home)
+export default withLayout(HomePage)
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
     const {data: pizzas} = await axios.get<Pizza[]>(process.env.NEXT_PUBLIC_DOMAIN + "/pizza")

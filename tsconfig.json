@@ -26,6 +26,9 @@
       "@/scss/*": [
         "scss/*"
       ],
+      "@/screens/*": [
+        "screens/*"
+      ],
       "@/assets/*": [
         "assets/*"
       ],
@@ -37,6 +40,9 @@
       ],
       "@/types/*": [
         "types/*"
+      ],
+      "@/config/*": [
+        "config/*"
       ]
     },
     "plugins": [

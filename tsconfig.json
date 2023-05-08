@@ -26,9 +26,6 @@
       "@/scss/*": [
         "scss/*"
       ],
-      "@/screens/*": [
-        "screens/*"
-      ],
       "@/assets/*": [
         "assets/*"
       ],

@@ -1,9 +1,11 @@
 "use client"
 import ReactPaginate from "react-paginate"
 import styles from "./Pagination.module.scss"
-import { PaginationProps } from "./Pagination.Props"
+import { usePages } from "../../hooks/usePages"
 
-const Pagination = ({ pages }: PaginationProps) => {
+const Pagination = () => {
+	const { isLoading, pages } = usePages()
+
 	return (
 		<ReactPaginate
 			className={styles.pagination}
@@ -11,7 +13,7 @@ const Pagination = ({ pages }: PaginationProps) => {
 			nextLabel=" >"
 			onPageChange={(e) => console.log(e.selected + 1)}
 			pageRangeDisplayed={5}
-			pageCount={pages}
+			pageCount={isLoading ? 0 : pages?.data ? pages?.data : 0}
 			previousLabel="< "
 			renderOnZeroPageCount={null}
 		/>

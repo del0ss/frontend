@@ -2,16 +2,17 @@
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "@/store/store"
 import { setCategoryId } from "@/store/slices/filterSlice"
-import { CategoriesProps } from "./Categories.Props"
 import cn from "classnames"
-
-const Categories = ({ categories }: CategoriesProps): JSX.Element => {
+import { useCategories } from "../../hooks/useCategories"
+// { categories }: CategoriesProps
+const Categories = (): JSX.Element => {
+	const { isLoading, categories } = useCategories()
 	const categoryId = useSelector((state: RootState) => state.filter.categoryId)
 	const dispatch: AppDispatch = useDispatch()
 	return (
 		<div className="categories">
 			<ul>
-				{categories.map(cat =>
+				{isLoading ? <div>Loading....</div> : categories?.data ? (categories?.data.map(cat =>
 					<li
 						key={cat.id}
 						onClick={() => dispatch(setCategoryId(cat.id))}
@@ -20,7 +21,7 @@ const Categories = ({ categories }: CategoriesProps): JSX.Element => {
 						})}
 					>
 						{cat.name}
-					</li>)
+					</li>)) : <div>No categories</div>
 				}
 			</ul>
 		</div>

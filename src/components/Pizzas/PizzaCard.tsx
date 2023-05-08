@@ -7,8 +7,11 @@ import cn from "classnames"
 import Button from "../Button/Button"
 import { PizzaCardProps, PizzaEnum } from "./PizzaCard.Props"
 import { Item } from "@/types/item"
+import { useQuery } from "react-query"
+import { PizzasService } from "@/services/pizzas.services"
 
 const PizzaCard = ({ id, name, price, imageURL, sizes, types, children }: PizzaCardProps): JSX.Element => {
+	const { data: response, isLoading, error } = useQuery("Pizzas", () => PizzasService.getPizzas())
 	const dispatch: AppDispatch = useDispatch()
 	const item = useSelector((state: RootState) => state.cart.items.find(item => item.id === id))
 	const [activeSize, setActiveSize] = useState(0)
@@ -22,7 +25,7 @@ const PizzaCard = ({ id, name, price, imageURL, sizes, types, children }: PizzaC
 			imageURL,
 			size: sizes[activeSize],
 			type: PizzaEnum[activeType],
-			count: 1
+			count: 1,
 		}
 		dispatch(addItem(item))
 	}
@@ -42,9 +45,9 @@ const PizzaCard = ({ id, name, price, imageURL, sizes, types, children }: PizzaC
 								key={type}
 								onClick={() => setActiveType(type)}
 								className={cn({
-									["active"]: activeType === type
+									["active"]: activeType === type,
 								})}>{PizzaEnum[type]}
-							</li>
+							</li>,
 						)}
 					</ul>
 					<ul>
@@ -52,9 +55,9 @@ const PizzaCard = ({ id, name, price, imageURL, sizes, types, children }: PizzaC
 								key={size}
 								onClick={() => setActiveSize(i)}
 								className={cn({
-									["active"]: activeSize === i
+									["active"]: activeSize === i,
 								})}>{size} см.
-							</li>
+							</li>,
 						)}
 					</ul>
 				</div>

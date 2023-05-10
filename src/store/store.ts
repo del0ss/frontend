@@ -1,12 +1,15 @@
 "use client"
-import { configureStore } from '@reduxjs/toolkit'
-import filter from './slices/filterSlice'
-import cart from './slices/cartSlice'
+import { configureStore } from "@reduxjs/toolkit"
+import filter from "./slices/filterSlice"
+import cart from "./slices/cartSlice"
+import pagination from "./slices/paginationSlice"
+
 export const store = configureStore({
-    reducer: {
-        filter,
-        cart
-    },
+	reducer: {
+		filter,
+		cart,
+		pagination,
+	},
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

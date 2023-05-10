@@ -38,6 +38,9 @@
       "@/types/*": [
         "types/*"
       ],
+      "@/hooks/*": [
+        "hooks/*"
+      ],
       "@/config/*": [
         "config/*"
       ]

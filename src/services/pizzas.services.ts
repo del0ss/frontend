@@ -5,7 +5,7 @@ import { API_URL } from "@/config/api.config"
 
 export const PizzasService = {
 	async getPizzas() {
-		return await axios.get<Pizza[]>(API_URL + "/", {})
+		return await axios.get<Pizza[]>(API_URL + `/`, {})
 	},
 	async getCategories() {
 		return await axios.get<Category[]>(API_URL + "/categories", {})

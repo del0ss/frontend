@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "@/store/store"
 import { setCategoryId } from "@/store/slices/filterSlice"
 import cn from "classnames"
-import { useCategories } from "../../hooks/useCategories"
-// { categories }: CategoriesProps
+import { useCategories } from "@/hooks/useCategories"
+
 const Categories = (): JSX.Element => {
 	const { isLoading, categories } = useCategories()
 	const categoryId = useSelector((state: RootState) => state.filter.categoryId)

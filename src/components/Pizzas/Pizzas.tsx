@@ -1,17 +1,23 @@
 "use client"
 import React from "react"
+import { usePizzas } from "@/hooks/usePizzas"
+import { useSelector } from "react-redux"
+import { RootState } from "@/store/store"
 import PizzaCard from "@/components/Pizzas/PizzaCard"
-import Skeleton from "@/components/Pizzas/Skeleton"
-import { usePizzas } from "../../hooks/usePizzas"
 
 const Pizzas = (): JSX.Element => {
+	const { sort, categoryId } = useSelector((state: RootState) => state.filter)
 	const { isLoading, pizzas } = usePizzas()
+	const sortByField = () => {
+		return sort.sortProperty
+	}
 	return (
 		<>
 			{isLoading ? (
-				<Skeleton />
+				<>Loading....</>
 			) : pizzas?.data ? (
-				pizzas.data.map(pizza => <PizzaCard key={pizza.id} {...pizza} />)
+				pizzas.data.map(pizza => <PizzaCard key={pizza.id} {...pizza} />,
+				)
 			) : <div>No pizzas</div>}
 		</>
 	)

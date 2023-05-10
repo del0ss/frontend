@@ -8,6 +8,7 @@ import PizzaCard from "@/components/Pizzas/PizzaCard"
 const Pizzas = (): JSX.Element => {
 	const { sort, categoryId } = useSelector((state: RootState) => state.filter)
 	const { isLoading, pizzas } = usePizzas()
+
 	const sortByField = () => {
 		return sort.sortProperty
 	}
@@ -15,8 +16,8 @@ const Pizzas = (): JSX.Element => {
 		<>
 			{isLoading ? (
 				<>Loading....</>
-			) : pizzas?.data ? (
-				pizzas.data.map(pizza => <PizzaCard key={pizza.id} {...pizza} />,
+			) : pizzas ? (
+				pizzas.map(pizza => <PizzaCard key={pizza.id} {...pizza} />,
 				)
 			) : <div>No pizzas</div>}
 		</>

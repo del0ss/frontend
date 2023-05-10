@@ -7,11 +7,8 @@ import cn from "classnames"
 import Button from "../Button/Button"
 import { PizzaCardProps, PizzaEnum } from "./PizzaCard.Props"
 import { Item } from "@/types/item"
-import { useQuery } from "react-query"
-import { PizzasService } from "@/services/pizzas.services"
 
 const PizzaCard = ({ id, name, price, imageURL, sizes, types, children }: PizzaCardProps): JSX.Element => {
-	const { data: response, isLoading, error } = useQuery("Pizzas", () => PizzasService.getPizzas())
 	const dispatch: AppDispatch = useDispatch()
 	const item = useSelector((state: RootState) => state.cart.items.find(item => item.id === id))
 	const [activeSize, setActiveSize] = useState(0)

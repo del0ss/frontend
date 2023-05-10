@@ -2,16 +2,16 @@
 import { useEffect, useRef, useState } from "react"
 import { SortProps } from "./Sort.Props"
 import { useDispatch, useSelector } from "react-redux"
-import { AppDispatch, RootState } from "@/store/store"
+import { RootState } from "@/store/store"
 import { setSort } from "@/store/slices/filterSlice"
 
 const Sort = ({}: SortProps): JSX.Element => {
 	const list = [
 		{ name: "популярности", sortProperty: "rating" },
 		{ name: "цене", sortProperty: "price" },
-		{ name: "алфавиту", sortProperty: "title" }
+		{ name: "алфавиту", sortProperty: "name" },
 	]
-	const dispatch: AppDispatch = useDispatch()
+	const dispatch = useDispatch()
 	const sort = useSelector((state: RootState) => state.filter.sort)
 	const [visible, setVisible] = useState(false)
 	const sortRef = useRef<HTMLDivElement>(null)
@@ -59,7 +59,7 @@ const Sort = ({}: SortProps): JSX.Element => {
 							onClick={() => onClickListItem(obj)}
 							className={sort.sortProperty === obj.sortProperty ? "active" : ""}>
 							{obj.name}
-						</li>
+						</li>,
 					)}
 				</ul>
 			</div>}

@@ -1,10 +1,9 @@
 import React from "react"
 import { Metadata } from "next"
 import Header from "@/components/Header/Header"
-import { Providers } from "@/store/provider"
 import { Pizza } from "@/types/pizza"
 import "@/scss/app.scss"
-import QueryProvider from "@/config/reactQuery.config"
+import { MainProvider } from "../src/providers/MainProvider"
 
 
 export const metadata: Metadata = {
@@ -17,14 +16,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="ru">
 		<body>
-		<QueryProvider>
-			<Providers>
-				<div className="wrapper">
-					<Header />
-					{children}
-				</div>
-			</Providers>
-		</QueryProvider>
+		<MainProvider>
+			<div className="wrapper">
+				<Header />
+				{children}
+			</div>
+		</MainProvider>
 		</body>
 		</html>
 	)

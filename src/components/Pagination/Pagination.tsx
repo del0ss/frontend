@@ -3,11 +3,11 @@ import ReactPaginate from "react-paginate"
 import styles from "./Pagination.module.scss"
 import { usePages } from "@/hooks/usePages"
 import { useDispatch, useSelector } from "react-redux"
-import { setCurrentPage } from "@/store/slices/paginationSlice"
 import { RootState } from "@/store/store"
+import { setCurrentPage } from "@/store/slices/filterSlice"
 
 const Pagination = () => {
-	let { currentPage, countPage } = useSelector((state: RootState) => state.pagination)
+	let { currentPage, countPage } = useSelector((state: RootState) => state.filter)
 	const dispatch = useDispatch()
 	const { isLoading, pages } = usePages()
 	if (pages?.data) {

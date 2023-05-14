@@ -7,8 +7,7 @@ import { setPizza } from "@/store/slices/pizzaSlice"
 
 export const usePizzas = () => {
 	const { pizzas } = useSelector((state: RootState) => state.pizza)
-	const { sort, categoryId } = useSelector((state: RootState) => state.filter)
-	const { currentPage } = useSelector((state: RootState) => state.pagination)
+	const { sort, categoryId, currentPage } = useSelector((state: RootState) => state.filter)
 	const dispatch = useDispatch()
 	const { isLoading } = useQuery(["pizza", sort.sortProperty, categoryId, currentPage],
 		() => PizzasService.getPizzas(sort.sortProperty, categoryId, currentPage),

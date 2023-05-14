@@ -10,7 +10,7 @@ module.exports = {
 
 
 const nextConfig = {
-	// reactStrictMode: true,
+	reactStrictMode: true,
 	poweredByHeader: false,
 	optimizeFonts: false,
 	env: {

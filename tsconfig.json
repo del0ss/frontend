@@ -41,6 +41,12 @@
       "@/hooks/*": [
         "hooks/*"
       ],
+      "@/screens/*": [
+        "screens/*"
+      ],
+      "@/ui/*": [
+        "ui/*"
+      ],
       "@/config/*": [
         "config/*"
       ]

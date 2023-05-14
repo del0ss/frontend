@@ -1,5 +1,5 @@
 import axios from "axios"
-import { Pizza } from "../../../../types/pizza"
+import { Pizza } from "@/types/pizza"
 
 type PizzaIdProps = {
 	params: {

@@ -1,24 +1,8 @@
 import "@/scss/app.scss"
-import Sort from "@/components/Sort/Sort"
-import Categories from "@/components/Categories/Categories"
-import Pizzas from "@/components/Pizzas/Pizzas"
-import Pagination from "@/components/Pagination/Pagination"
+import Home from "@/screens/home/Home"
 
 export default async function HomePage() {
 	return (
-		<div className="content">
-			<div className="container">
-
-				<div className="content__top">
-					<Categories />
-					<Sort />
-				</div>
-				<h2 className="content__title">Все пиццы</h2>
-				<div className="content__items">
-					<Pizzas />
-				</div>
-			</div>
-			<Pagination />
-		</div>
+		<Home />
 	)
 }

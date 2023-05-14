@@ -3,14 +3,12 @@ import { configureStore } from "@reduxjs/toolkit"
 import pizza from "./slices/pizzaSlice"
 import filter from "./slices/filterSlice"
 import cart from "./slices/cartSlice"
-import pagination from "./slices/paginationSlice"
 
 export const store = configureStore({
 	reducer: {
 		pizza,
 		filter,
 		cart,
-		pagination,
 	},
 })
 

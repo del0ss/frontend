@@ -27,6 +27,7 @@ const Header = ({ ...props }: HeaderProps): JSX.Element => {
 					</div>
 				</Link>
 				<Search />
+				<Link href={"/auth"} className="button button--cart">Регистрация</Link>
 				<div className="header__cart">
 					<Link href="/cart" className="button button--cart">
 						<span>{totalPrice} ₽</span>

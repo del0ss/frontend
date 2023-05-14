@@ -9,6 +9,7 @@ export default function QueryProvider({ children }: { children: React.ReactNode 
 		defaultOptions: {
 			queries: {
 				refetchOnWindowFocus: false,
+				keepPreviousData: true,
 			},
 		},
 	}))
